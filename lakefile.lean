@@ -8,6 +8,10 @@ package compfiles where
     ⟨`autoImplicit, false⟩,
     ⟨`relaxedAutoImplicit, false⟩
   ]
+  moreLinkArgs := #[
+    "-L./.lake/packages/LeanCopilot/.lake/build/lib",
+    "-lctranslate2"
+  ]
 
 @[default_target]
 lean_lib ProblemExtraction
@@ -32,3 +36,6 @@ lean_exe checkSolution where
 
 require mathlib from git "https://github.com/leanprover-community/mathlib4" @ "master"
 require tryAtEachStep from git "https://github.com/dwrensha/tryAtEachStep" @ "main"
+
+require LeanCopilot from git "https://github.com/lean-dojo/LeanCopilot.git" @ "v1.2.0"
+ with NameMap.empty.insert `noCUDA "true"
